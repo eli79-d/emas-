@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Historique – emas</title>
+  <link rel="stylesheet" href="historique.css">
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="emas-nav">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="retrait.html">Retrait</a></li>
+      <li><a href="recharge.html">Recharge</a></li>
+      <li><a href="communaute.html">Communauté</a></li>
+      <li><a href="historique.html" class="active">Historique</a></li>
+      <li><a href="bonus.html">Bonus</a></li>
+      <li><a href="connexion.html">Connexion</a></li>
+    </ul>
+  </nav>
+  <script src="nav.js"></script>
+  <main>
+    <h2 style="text-align:center;">Mon historique</h2>
+    <div class="columns">
+      <div class="column">
+        <h3>Historique des retraits</h3>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Statut</th>
+              <th>Montant retiré</th>
+              <th>Montant reçu</th>
+              <th>Taxe (5%)</th>
+              <th>Date/heure</th>
+            </tr>
+          </thead>
+          <tbody id="withdraw-history"></tbody>
+        </table>
+      </div>
+      <div class="column">
+        <h3>Historique des recharges</h3>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Montant rechargé</th>
+              <th>Date/heure</th>
+            </tr>
+          </thead>
+          <tbody id="recharge-history"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script src="historique.js"></script>
+</body>
+</html>

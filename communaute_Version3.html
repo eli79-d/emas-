@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Communauté – emas</title>
+  <link rel="stylesheet" href="communaute.css">
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="emas-nav">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="retrait.html">Retrait</a></li>
+      <li><a href="recharge.html">Recharge</a></li>
+      <li><a href="communaute.html" class="active">Communauté</a></li>
+      <li><a href="historique.html">Historique</a></li>
+      <li><a href="bonus.html">Bonus</a></li>
+      <li><a href="connexion.html">Connexion</a></li>
+    </ul>
+  </nav>
+  <script src="nav.js"></script>
+  <main>
+    <h2 style="text-align:center;">Mon espace communauté</h2>
+    <div class="affiliation">
+      <label for="affiliation-link">Votre lien d’affiliation :</label>
+      <div class="link-box">
+        <input type="text" id="affiliation-link" readonly value="https://emas.com/invite/eli79-d">
+        <button id="copy-link">Copier</button>
+      </div>
+      <div id="copied-msg" class="copied-msg"></div>
+    </div>
+    <div class="parrainage">
+      <label>Parrainage : <span id="nb-parraines">3</span>/10 personnes</label>
+      <div class="progress-bar">
+        <div id="bar-fill" class="bar-fill" style="width: 30%;"></div>
+      </div>
+      <div class="progress-text">
+        <span id="progress-msg">Encore <strong>7</strong> personnes à parrainer pour atteindre votre objectif !</span>
+      </div>
+    </div>
+  </main>
+  <script src="communaute.js"></script>
+</body>
+</html>

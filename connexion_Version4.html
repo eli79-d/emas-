@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion – emas</title>
+  <link rel="stylesheet" href="connexion.css">
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="emas-nav">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="retrait.html">Retrait</a></li>
+      <li><a href="recharge.html">Recharge</a></li>
+      <li><a href="communaute.html">Communauté</a></li>
+      <li><a href="historique.html">Historique</a></li>
+      <li><a href="bonus.html">Bonus</a></li>
+      <li><a href="connexion.html" class="active">Connexion</a></li>
+    </ul>
+  </nav>
+  <script src="nav.js"></script>
+  <main>
+    <h2 style="text-align:center;">Connexion à mon compte</h2>
+    <form id="loginForm">
+      <label for="login">Identifiant ou numéro de téléphone :</label>
+      <input type="text" id="login" name="login" required placeholder="Votre identifiant ou numéro">
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="password" required placeholder="Votre mot de passe">
+      <div id="form-error" class="form-error"></div>
+      <button type="submit">Se connecter</button>
+    </form>
+    <div id="success-message" class="success-message" style="display:none;">
+      ✅ Connexion réussie ! Redirection en cours...
+    </div>
+    <div class="links">
+      <a href="inscription.html">Créer un compte</a> | <a href="reset.html">Mot de passe oublié ?</a>
+    </div>
+  </main>
+  <script src="connexion.js"></script>
+</body>
+</html>

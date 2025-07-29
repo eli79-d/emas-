@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bonus – emas</title>
+  <link rel="stylesheet" href="bonus.css">
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="emas-nav">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="retrait.html">Retrait</a></li>
+      <li><a href="recharge.html">Recharge</a></li>
+      <li><a href="communaute.html">Communauté</a></li>
+      <li><a href="historique.html">Historique</a></li>
+      <li><a href="bonus.html" class="active">Bonus</a></li>
+      <li><a href="connexion.html">Connexion</a></li>
+    </ul>
+  </nav>
+  <script src="nav.js"></script>
+  <main>
+    <h2 style="text-align:center;">Mes bonus de parrainage</h2>
+    <div class="solde-info">
+      Solde actuel : <span id="solde">0 FCFA</span>
+    </div>
+    <div class="bonus-progress">
+      <label>Parrainés : <span id="nb-parraines">23</span>/10</label>
+      <div class="progress-bar">
+        <div id="bar-fill" class="bar-fill" style="width: 0%;"></div>
+      </div>
+      <div class="progress-text" id="progress-msg"></div>
+    </div>
+    <div class="bonus-info">
+      <div>Nombre de bonus gagnés : <span id="bonus-count">0</span></div>
+      <div>Montant total des bonus : <span id="bonus-total">0 FCFA</span></div>
+    </div>
+  </main>
+  <script src="bonus.js"></script>
+</body>
+</html>

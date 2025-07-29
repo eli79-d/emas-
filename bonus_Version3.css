@@ -1,0 +1,48 @@
+.solde-info {
+  color: #1976d2;
+  font-size: 1.08em;
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+.bonus-progress label {
+  font-weight: bold;
+  color: #144e88;
+  margin-bottom: 0.6em;
+  display: block;
+  text-align: center;
+}
+.progress-bar {
+  width: 100%;
+  background: #e3eefd;
+  border-radius: 8px;
+  height: 24px;
+  margin-bottom: 0.7em;
+  box-shadow: 0 1px 6px #1976d21a;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1976d2 60%, #2196f3 100%);
+  border-radius: 8px 0 0 8px;
+  transition: width 0.5s;
+}
+.progress-text {
+  color: #1976d2;
+  font-size: 0.99em;
+  text-align: center;
+  margin-bottom: 1.2em;
+}
+.bonus-info {
+  text-align: center;
+  font-size: 1.1em;
+  color: #144e88;
+  margin-top: 2em;
+}
+.bonus-info span {
+  font-weight: bold;
+  color: #1976d2;
+}
+@media (max-width: 500px) {
+  .container { padding: 1em; }
+  h2 { font-size: 1.1em; }
+}
