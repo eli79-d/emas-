@@ -1,1424 +1,987 @@
-# emas-
-body {
-  font-family: Arial, sans-serif;
-  background: #f0f8ff;
-  margin: 0;
-  color: #333;
-}
-header {
-  background: #1e90ff;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-.logo {
-  height: 50px;
-  margin-bottom: 10px;
-}
-.form-container {
-  background: white;
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(30,144,255,0.3);
-}
-form label {
-  display: block;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-form input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 0.3rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-form button {
-  margin-top: 1.5rem;
-  width: 100%;
-  padding: 10px;
-  background: #1e90ff;
-  border: none;
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-form button:hover {
-  background: #187bcd;
-}
-p {
-  text-align: center;
-  margin-top: 1rem;
-}
-p a {
-  color: #1e90ff;
-  text-decoration: none;
-}
-p a:hover {
-  text-decoration: underline;
-}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EMAS - Inscription</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <img src="assets/logo.png" alt="Logo EMAS" class="logo" />
-    <h1>Créer un compte EMAS 📝</h1>
-  </header>
-
-  <main class="form-container">
-    <form action="dashboard.html" method="POST" id="registerForm">
-      <label for="phone">📞 Numéro de téléphone :</label>
-      <input type="tel" id="phone" name="phone" placeholder="+228 90 00 00 00" required />
-
-      <label for="username">👤 Pseudo :</label>
-      <input type="text" id="username" name="username" required />
-
-      <label for="password">🔑 Mot de passe :</label>
-      <input type="password" id="password" name="password" required />
-
-      <label for="confirmPassword">🔑 Confirmer mot de passe :</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required />
-
-      <label for="invitationCode">📝 Code d’invitation (facultatif) :</label>
-      <input type="text" id="invitationCode" name="invitationCode" />
-
-      <label for="captcha">🛡️ Code Captcha :</label>
-      <input type="text" id="captcha" name="captcha" required />
-
-      <button type="submit">🚀 S'inscrire maintenant</button>
-    </form>
-    <p>Déjà un compte ? <a href="index.html">Connectez-vous ici 🔐</a></p>
-  </main>
-
-  <script>
-    const form = document.getElementById('registerForm');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const pwd = form.password.value;
-      const pwdConfirm = form.confirmPassword.value;
-      if(pwd !== pwdConfirm){
-        alert('Les mots de passe ne correspondent pas!');
-        return;
-      }
-      alert('Inscription réussie !');
-      // Ici, logique d'inscription réelle à intégrer (backend ou stockage local)
-      window.location.href = 'dashboard.html';
-    });
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EMAS - Connexion</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <img src="assets/logo.png" alt="Logo EMAS" class="logo" />
-    <h1>Bienvenue sur <strong>EMAS</strong> 🚀</h1>
-  </header>
-
-  <main class="form-container">
-    <h2>Connexion 🔐</h2>
-    <form action="dashboard.html" method="POST" id="loginForm">
-      <label for="phone">📞 Téléphone :</label>
-      <input type="tel" id="phone" name="phone" placeholder="+228 90 00 00 00" required />
-
-      <label for="password">🔑 Mot de passe :</label>
-      <input type="password" id="password" name="password" required />
-
-      <button type="submit">Se connecter</button>
-    </form>
-    <p>Pas encore de compte ? <a href="register.html">Inscrivez-vous ici ✍️</a></p>
-  </main>
-
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Ici, logique de connexion (à compléter selon backend)
-      alert('Connexion réussie !');
-      window.location.href = 'dashboard.html';
-    });
-  </script>
-</body>
-</html>
-<!-- PAGE DE CONNEXION - login.html -->
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connexion - EMAS</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="auth-container">
-    <h1>🔐 Connexion à EMAS</h1>
-    <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="Adresse e-mail" required>
-      <input type="password" id="loginPassword" placeholder="Mot de passe" required>
-      <button type="submit">Se connecter</button>
-    </form>
-    <p>Pas encore inscrit ? <a href="register.html">Inscrivez-vous ici</a></p>
-  </div>
-
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const email = document.getElementById("loginEmail").value;
-      const password = document.getElementById("loginPassword").value;
-      const user = JSON.parse(localStorage.getItem(email));
-      if (user && user.password === password) {
-        sessionStorage.setItem("emas_user", JSON.stringify(user));
-        window.location.href = "home.html";
-      } else {
-        alert("Email ou mot de passe incorrect");
-      }
-    });
-  </script>
-</body>
-</html>
-
-<!-- PAGE D'INSCRIPTION - register.html -->
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription - EMAS</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="auth-container">
-    <h1>📝 Inscription à EMAS</h1>
-    <form id="registerForm">
-      <input type="text" id="username" placeholder="Nom complet" required>
-      <input type="email" id="email" placeholder="Adresse e-mail" required>
-      <input type="password" id="password" placeholder="Mot de passe" required>
-      <input type="text" id="parrain" placeholder="Code de parrainage (facultatif)">
-      <button type="submit">S'inscrire</button>
-    </form>
-    <p>Déjà un compte ? <a href="login.html">Connectez-vous ici</a></p>
-  </div>
-
-  <script>
-    document.getElementById("registerForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const user = {
-        username: document.getElementById("username").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value,
-        parrain: document.getElementById("parrain").value || null,
-        bonus: 0,
-        invites: 0
-      };
-      localStorage.setItem(user.email, JSON.stringify(user));
-      sessionStorage.setItem("emas_user", JSON.stringify(user));
-      window.location.href = "home.html";
-    });
-  </script>
-</body>
-</html>
-
-<!-- PAGE D'ACCUEIL - home.html (déjà générée) -->
-<!-- Le fichier home.html existant servira de tableau de bord après connexion/inscription -->
-<script>
-  const user = sessionStorage.getItem("emas_user");
-  if (!user) {
-    // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
-    window.location.href = "login.html";
-  }
-</script>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Accueil - EMAS</title>
+<title>EMAS - Plateforme d'investissement</title>
 <style>
+  /* Reset & basiques */
+  * { box-sizing: border-box; }
   body {
-    background: #f0f8ff; /* bleu très clair */
-    color: #003366; /* bleu foncé */
+    margin:0; padding:0;
     font-family: Arial, sans-serif;
-    margin: 20px;
+    background: #0f172a;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    color: #3b82f6;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  a:hover {
+    color: #2563eb;
+  }
+
+  /* Header */
+  header {
+    background: #1e293b;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   header h1 {
-    margin-bottom: 20px;
-    color: #002244;
-  }
-  .user-info div {
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-  #balance {
-    font-weight: bold;
-    color: #0055cc;
-    font-size: 1.3em;
+    margin: 0;
+    color: #3b82f6;
+    font-weight: 700;
+    font-size: 1.8rem;
   }
   nav {
     display: flex;
+    gap: 0.6rem;
     flex-wrap: wrap;
-    gap: 15px;
-    margin: 30px 0;
   }
-  button {
-    flex: 1 1 130px;
-    background: #0073e6;
+  nav button {
+    background: transparent;
     border: none;
-    padding: 15px;
     color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  button:hover {
-    background: #005bb5;
-  }
-  #support-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background: #0073e6;
-    border-radius: 50%;
-    font-size: 28px;
-    line-height: 60px;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 0 10px #005bb5;
-    color: white;
-  }
-  #chart-container {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #b3d1ff;
-  }
-</style>
-</head>
-<body>
-
-<header><h1>Bienvenue sur EMAS</h1></header>
-
-<section class="user-info">
-  <div>Nom : <span id="user-name">Jean Dupont</span></div>
-  <div>Téléphone : <span id="user-phone">+228 90000000</span></div>
-  <div>Solde : <span id="balance">10 000 FCFA</span></div>
-</section>
-
-<section id="chart-container">
-  <canvas id="profitChart"></canvas>
-</section>
-
-<nav>
-  <button id="btn-retrait">Retrait</button>
-  <button id="btn-compte">Compte</button>
-  <button id="btn-bonus">Bonus</button>
-  <button id="btn-historique">Historique</button>
-  <button id="btn-recharge">Recharge</button>
-  <button id="btn-communaute">Communauté</button>
-</nav>
-
-<div id="support-btn" title="Support">💬</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  const ctx = document.getElementById('profitChart').getContext('2d');
-  const profitChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['J-6','J-5','J-4','J-3','J-2','J-1','Aujourd’hui'],
-      datasets: [{
-        label: 'Profit journalier (FCFA)',
-        data: [500, 700, 600, 900, 850, 1000, 1200],
-        borderColor: '#0073e6',
-        backgroundColor: 'rgba(0,115,230,0.3)',
-        fill: true,
-        tension: 0.3,
-        pointRadius: 5
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: { 
-        y: { beginAtZero: true, grid: {color:'#cce0ff'} },
-        x: { grid: {color:'#cce0ff'} }
-      },
-      plugins: { legend: { labels: { color: '#003366' } } }
-    }
-  });
-
-  // Boutons
-  document.getElementById('btn-retrait').onclick = () => alert('Onglet Retrait');
-  document.getElementById('btn-compte').onclick = () => alert('Onglet Compte');
-  document.getElementById('btn-bonus').onclick = () => alert('Onglet Bonus');
-  document.getElementById('btn-historique').onclick = () => alert('Onglet Historique');
-  document.getElementById('btn-recharge').onclick = () => alert('Onglet Recharge');
-  document.getElementById('btn-communaute').onclick = () => alert('Onglet Communauté');
-
-  document.getElementById('support-btn').onclick = () => alert('Support ouvert');
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>EMAS - Accueil & Portefeuille</title>
-<style>
-  body {
-    background: #f0f8ff;
-    color: #003366;
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  h1 { color: #002244; }
-  nav {
-    margin: 20px 0;
-  }
-  button.nav-btn {
-    background: #0073e6;
-    border: none;
-    padding: 12px 18px;
-    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
     border-radius: 6px;
     cursor: pointer;
-    margin-right: 10px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    font-size: 1rem;
+    transition: background 0.3s ease;
   }
-  button.nav-btn:hover {
-    background: #005bb5;
+  nav button:hover,
+  nav button.active {
+    background: #3b82f6;
   }
+
+  /* Main container */
+  main.container {
+    flex-grow: 1;
+    max-width: 960px;
+    margin: 1rem auto 2rem auto;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px #3b82f6aa;
+  }
+
+  /* Sections */
   section {
     display: none;
-    margin-top: 20px;
   }
   section.active {
     display: block;
   }
+
+  h2 {
+    color: #3b82f6;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Form styling */
   label {
     display: block;
-    margin: 10px 0 5px;
+    margin-bottom: 0.25rem;
     font-weight: 600;
   }
-  select, input[type=text], input[type=password], input[type=tel] {
-    width: 300px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #0073e6;
-    font-size: 1em;
-  }
-  #create-wallet-btn {
-    margin-top: 20px;
-    background: #009900;
-    padding: 12px 20px;
-    font-weight: bold;
-    border: none;
+  input, select, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
     border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+  }
+  button.primary {
+    background: #3b82f6;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
     color: white;
     cursor: pointer;
+    transition: background 0.3s ease;
   }
-  #create-wallet-btn:hover {
-    background: #007700;
+  button.primary:hover {
+    background: #2563eb;
   }
-  .warning {
-    margin-top: 20px;
-    background: #ffe6e6;
-    border: 1px solid #cc0000;
-    color: #990000;
-    padding: 15px;
-    max-width: 600px;
-    border-radius: 8px;
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    color: white;
   }
-  .success {
-    margin-top: 15px;
-    background: #d4edda;
-    border: 1px solid #28a745;
-    color: #155724;
-    padding: 15px;
-    max-width: 600px;
-    border-radius: 8px;
+  th, td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #334155;
+    text-align: left;
+  }
+  th {
+    background: #334155;
+  }
+
+  /* Progress bar */
+  progress {
+    width: 100%;
+    height: 1rem;
+    border-radius: 6px;
+  }
+
+  /* Message */
+  .message {
+    font-weight: 700;
+    margin-top: 0.5rem;
+  }
+
+  /* Graphique canvas */
+  #profitChart {
+    width: 100% !important;
+    max-width: 100%;
+    height: 200px !important;
+    background: #334155;
+    border-radius: 12px;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    main.container {
+      margin: 1rem 1rem 2rem 1rem;
+      padding: 1rem;
+    }
+    nav {
+      justify-content: center;
+    }
+    nav button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
   }
 </style>
 </head>
 <body>
 
-<header><h1>EMAS</h1></header>
+<header>
+  <h1>EMAS</h1>
+  <nav id="mainNav">
+    <!-- Boutons mis dynamiquement -->
+  </nav>
+</header>
 
-<nav>
-  <button class="nav-btn" id="btn-accueil">Accueil</button>
-  <button class="nav-btn" id="btn-compte">Compte</button>
-  <!-- autres boutons comme Bonus, Historique, etc peuvent être ajoutés ici -->
-</nav>
+<main class="container" id="mainContent">
 
-<!-- Section Accueil -->
-<section id="accueil" class="active">
-  <h2>Bienvenue sur EMAS</h2>
-  <p>Voici la page d'accueil.</p>
-  <!-- Tu peux insérer ici les infos utilisateur, graphique, etc -->
-</section>
+  <!-- Connexion -->
+  <section id="connexion" class="active">
+    <h2>Connexion EMAS</h2>
+    <form id="loginForm">
+      <label for="loginCountryCode">Code indicatif</label>
+      <select id="loginCountryCode" required>
+        <option value="+228" selected>Togo (+228)</option>
+        <option value="+229">Bénin (+229)</option>
+        <option value="+225">Côte d'Ivoire (+225)</option>
+        <option value="+226">Burkina Faso (+226)</option>
+        <option value="+227">Niger (+227)</option>
+      </select>
 
-<!-- Section Portefeuille -->
-<section id="portefeuille">
-  <h2>Enregistrer votre portefeuille</h2>
-  
-  <div class="warning">
-    <p><strong>Attention :</strong></p>
-    <ol>
-      <li>Vous pouvez uniquement ajouter un portefeuille de transfert mobile money pour le retrait.</li>
-      <li>Veuillez-vous assurer que le numéro du portefeuille de transfert mobile money est correct et fonctionnel.</li>
-    </ol>
-  </div>
-  
-  <form id="wallet-form">
-    <label for="wallet-type">Portefeuille (mobile money) :</label>
-    <select id="wallet-type" required>
-      <option value="" disabled selected>-- Choisissez un portefeuille --</option>
-      <option value="MTN">MTN</option>
-      <option value="ORANGE">ORANGE</option>
-      <option value="TEST">TEST</option>
-      <option value="TMONEY">TMONEY</option>
-      <option value="WAVE">WAVE</option>
-      <option value="FLOOZ">FLOOZ</option>
-    </select>
-    
-    <label for="pseudo">Pseudo :</label>
-    <input type="text" id="pseudo" placeholder="Votre pseudo" required />
-    
-    <label for="phone">Numéro de téléphone :</label>
-    <input type="tel" id="phone" placeholder="+228 ..." pattern="\+?\d{8,15}" required />
-    
-    <label for="transaction-pass">Mot de transaction :</label>
-    <input type="password" id="transaction-pass" placeholder="Mot de transaction" required />
-    
-    <button type="submit" id="create-wallet-btn">Créer un portefeuille</button>
-  </form>
-  
-  <div id="msg-success" class="success" style="display:none;">
-    Portefeuille enregistré avec succès !
-  </div>
-</section>
+      <label for="loginPhoneNumber">Numéro de téléphone</label>
+      <input type="tel" id="loginPhoneNumber" pattern="[0-9]{6,15}" placeholder="Ex: 90000000" required />
+
+      <label for="loginPassword">Mot de passe</label>
+      <input type="password" id="loginPassword" required />
+
+      <button type="submit" class="primary">Se connecter maintenant</button>
+    </form>
+    <p class="message" id="loginMsg"></p>
+    <p>Pas encore inscrit ? <a id="showSignupLink">S'inscrire ici</a></p>
+  </section>
+
+  <!-- Inscription -->
+  <section id="inscription">
+    <h2>Inscription EMAS</h2>
+    <form id="signupForm">
+      <label for="signupCountryCode">Code indicatif</label>
+      <select id="signupCountryCode" required>
+        <option value="+228" selected>Togo (+228)</option>
+        <option value="+229">Bénin (+229)</option>
+        <option value="+225">Côte d'Ivoire (+225)</option>
+        <option value="+226">Burkina Faso (+226)</option>
+        <option value="+227">Niger (+227)</option>
+      </select>
+
+      <label for="signupPhoneNumber">Numéro de téléphone</label>
+      <input type="tel" id="signupPhoneNumber" pattern="[0-9]{6,15}" placeholder="Ex: 90000000" required />
+
+      <label for="signupPseudo">Pseudo</label>
+      <input type="text" id="signupPseudo" placeholder="Votre pseudo" required />
+
+      <label for="signupPassword">Mot de passe</label>
+      <input type="password" id="signupPassword" minlength="6" required />
+
+      <label for="signupPasswordConfirm">Confirmer mot de passe</label>
+      <input type="password" id="signupPasswordConfirm" minlength="6" required />
+
+      <label for="signupInviteCode">Code d'invitation (optionnel)</label>
+      <input type="text" id="signupInviteCode" placeholder="Code d'invitation" />
+
+      <label for="signupCaptcha">Code CAPTCHA</label>
+      <input type="text" id="signupCaptcha" placeholder="Entrez le code CAPTCHA : AB12" required />
+
+      <button type="submit" class="primary">S'inscrire maintenant</button>
+    </form>
+    <p class="message" id="signupMsg"></p>
+    <p>Déjà inscrit ? <a id="showLoginLink">Se connecter ici</a></p>
+  </section>
+
+  <!-- ACCUEIL -->
+  <section id="accueil">
+    <h2>Bienvenue, <span id="userNameDisplay"></span></h2>
+    <p>Téléphone : <span id="userPhoneDisplay"></span></p>
+    <p>Solde : <strong><span id="userBalance"></span></strong></p>
+    <canvas id="profitChart"></canvas>
+    <div style="display:flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem;">
+      <button class="primary" data-target="retrait">Retrait</button>
+      <button class="primary" data-target="compte">Compte</button>
+      <button class="primary" data-target="bonus">Bonus</button>
+      <button class="primary" data-target="historique">Historique</button>
+      <button class="primary" data-target="recharge">Recharge</button>
+      <button class="primary" data-target="communaute">Communauté</button>
+      <button class="primary" data-target="support">Support</button>
+      <button id="logoutBtn" style="margin-left:auto; background:#ef4444;">Se déconnecter</button>
+    </div>
+  </section>
+
+  <!-- COMPTE -->
+  <section id="compte">
+    <h2>Portefeuille</h2>
+    <form id="walletForm">
+      <label for="walletMethod">Moyen de paiement</label>
+      <select id="walletMethod" required>
+        <option value="">-- Choisir --</option>
+        <option value="MTN">MTN</option>
+        <option value="Orange">Orange</option>
+        <option value="Test">Test</option>
+        <option value="Wave">Wave</option>
+        <option value="TMoney">TMoney</option>
+        <option value="Flooz">Flooz</option>
+      </select>
+      <label for="walletPseudo">Pseudo</label>
+      <input type="text" id="walletPseudo" required />
+      <label for="walletPhone">Numéro de téléphone</label>
+      <input type="tel" id="walletPhone" pattern="[0-9]{6,15}" required />
+      <label for="walletPwd">Mot de transaction</label>
+      <input type="password" id="walletPwd" minlength="4" required />
+      <button type="submit" class="primary">Créer un portefeuille</button>
+    </form>
+    <div id="walletMsg" class="message" style="color:#34d399;"></div>
+    <p style="font-size: 0.85rem; margin-top:1rem; color:#94a3b8;">
+      1. Vous pouvez uniquement ajouter un portefeuille de transfert mobile money pour le retrait.<br />
+      2. Veuillez-vous assurer que le numéro du portefeuille est correct et fonctionnel.
+    </p>
+  </section>
+
+  <!-- RETRAIT -->
+  <section id="retrait">
+    <h2>Demande de retrait</h2>
+    <form id="withdrawForm">
+      <label for="withdrawAmount">Montant à retirer (min 1000 FCFA)</label>
+      <input type="number" id="withdrawAmount" min="1000" max="10000000" required />
+      <label for="withdrawPwd">Mot de passe de transaction</label>
+      <input type="password" id="withdrawPwd" minlength="4" required />
+      <button type="submit" class="primary">Demander un retrait</button>
+    </form>
+    <p style="font-size: 0.85rem; color: #94a3b8; margin-top:1rem;">
+      Rappel :<br />
+      - Retrait quotidien 24h/24, 7j/7.<br />
+      - Montant entre 1000 FCFA et 10 000 000 FCFA.<br />
+      - Une seule demande de retrait par jour.<br />
+      - Taxe de retrait : 5%.
+    </p>
+    <div id="withdrawMsg" class="message"></div>
+  </section>
+
+  <!-- RECHARGE -->
+  <section id="recharge">
+    <h2>Recharger le compte</h2>
+    <p>Solde actuel : <strong id="rechargeBalance"></strong></p>
+    <form id="rechargeForm">
+      <label for="rechargeAmount">Montant à recharger (min 3000 FCFA)</label>
+      <input type="number" id="rechargeAmount" min="3000" required />
+      <label for="rechargeMethod">Moyen de recharge</label>
+      <select id="rechargeMethod" required>
+        <option value="">-- Choisir --</option>
+        <option value="MTN">MTN</option>
+        <option value="Orange">Orange</option>
+        <option value="Test">Test</option>
+        <option value="Wave">Wave</option>
+        <option value="TMoney">TMoney</option>
+        <option value="Flooz">Flooz</option>
+      </select>
+      <label for="rechargePhone">Numéro de téléphone</label>
+      <input type="tel" id="rechargePhone" pattern="[0-9]{6,15}" required />
+      <button type="submit" class="primary">Recharger maintenant</button>
+    </form>
+    <div id="rechargeMsg" class="message" style="color:#34d399;"></div>
+  </section>
+
+  <!-- COMMUNAUTÉ -->
+  <section id="communaute">
+    <h2>Communauté</h2>
+    <p>Votre lien d'affiliation :</p>
+    <input type="text" id="affiliateLink" readonly style="width:100%; padding:0.5rem; background:#334155; border:none; border-radius:6px; color:#cbd5e1; user-select: all;" />
+    <h3>Parrainages</h3>
+    <label>Nombre de personnes parrainées :</label>
+    <progress id="referralProgress" max="10" value="0"></progress>
+    <p><span id="referralCount">0</span> / 10</p>
+  </section>
+
+  <!-- HISTORIQUE -->
+  <section id="historique">
+    <h2>Historique</h2>
+    <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
+      <div style="flex:1; min-width:280px;">
+        <h3>Historique des retraits</h3>
+        <table id="historyWithdrawTable">
+          <thead>
+            <tr>
+              <th>Statut</th>
+              <th>Montant retiré (FCFA)</th>
+              <th>Montant reçu (FCFA)</th>
+              <th>Taxe (5%)</th>
+              <th>Date & Heure</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div style="flex:1; min-width:280px;">
+        <h3>Historique des recharges</h3>
+        <table id="historyRechargeTable">
+          <thead>
+            <tr>
+              <th>Montant (FCFA)</th>
+              <th>Date & Heure</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- BONUS -->
+  <section id="bonus">
+    <h2>Bonus</h2>
+    <label>Nombre de personnes parrainées : <span id="bonusReferralCount">0</span></label>
+    <progress id="bonusProgress" max="10" value="0"></progress>
+    <p>À chaque 10 personnes parrainées, vous gagnez un bonus de 1000 FCFA ajouté automatiquement à votre solde.</p>
+  </section>
+
+  <!-- SUPPORT -->
+  <section id="support">
+    <h2>Support</h2>
+    <p>Pour toute question, contactez le support via :</p>
+    <ul>
+      <li>Email : support@emas.com</li>
+      <li>Téléphone : +228 90000000</li>
+      <li>Chatbot disponible prochainement.</li>
+    </ul>
+  </section>
+</main>
+
+<!-- Chart.js CDN pour le graphique -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  // Navigation simple entre Accueil et Portefeuille
-  const btnAccueil = document.getElementById('btn-accueil');
-  const btnCompte = document.getElementById('btn-compte');
-  const sectionAccueil = document.getElementById('accueil');
-  const sectionPortefeuille = document.getElementById('portefeuille');
+  /* --- VARIABLES ET INITIALISATION --- */
 
-  btnAccueil.addEventListener('click', () => {
-    sectionAccueil.classList.add('active');
-    sectionPortefeuille.classList.remove('active');
-  });
+  // Stockage utilisateurs et session simulée (localStorage)
+  const STORAGE_USERS_KEY = 'emasUsers';
+  const STORAGE_SESSION_KEY = 'emasCurrentUser';
 
-  btnCompte.addEventListener('click', () => {
-    sectionPortefeuille.classList.add('active');
-    sectionAccueil.classList.remove('active');
-  });
+  // Objets DOM
+  const nav = document.getElementById('mainNav');
+  const sections = {
+    connexion: document.getElementById('connexion'),
+    inscription: document.getElementById('inscription'),
+    accueil: document.getElementById('accueil'),
+    compte: document.getElementById('compte'),
+    retrait: document.getElementById('retrait'),
+    recharge: document.getElementById('recharge'),
+    communaute: document.getElementById('communaute'),
+    historique: document.getElementById('historique'),
+    bonus: document.getElementById('bonus'),
+    support: document.getElementById('support'),
+  };
 
-  // Gestion formulaire portefeuille
-  const walletForm = document.getElementById('wallet-form');
-  const msgSuccess = document.getElementById('msg-success');
+  // Messages
+  const loginMsg = document.getElementById('loginMsg');
+  const signupMsg = document.getElementById('signupMsg');
+  const walletMsg = document.getElementById('walletMsg');
+  const withdrawMsg = document.getElementById('withdrawMsg');
+  const rechargeMsg = document.getElementById('rechargeMsg');
 
-  walletForm.addEventListener('submit', (e) => {
+  // User info displays
+  const userNameDisplay = document.getElementById('userNameDisplay');
+  const userPhoneDisplay = document.getElementById('userPhoneDisplay');
+  const userBalanceDisplay = document.getElementById('userBalance');
+  const rechargeBalanceDisplay = document.getElementById('rechargeBalance');
+
+  // Input refs
+  const walletForm = document.getElementById('walletForm');
+  const withdrawForm = document.getElementById('withdrawForm');
+  const rechargeForm = document.getElementById('rechargeForm');
+  const affiliateLinkInput = document.getElementById('affiliateLink');
+  const referralProgress = document.getElementById('referralProgress');
+  const referralCountSpan = document.getElementById('referralCount');
+  const bonusReferralCount = document.getElementById('bonusReferralCount');
+  const bonusProgress = document.getElementById('bonusProgress');
+
+  // Chart setup
+  let profitChart;
+  const profitDataPoints = Array(7).fill(0).map(() => Math.floor(Math.random()*500)); // exemple aléatoire
+
+  // Utilisateur connecté
+  let currentUser = null;
+
+  /* --- FONCTIONS UTILITAIRES --- */
+
+  // Récupérer tous les utilisateurs
+  function getAllUsers() {
+    return JSON.parse(localStorage.getItem(STORAGE_USERS_KEY) || '[]');
+  }
+
+  // Sauvegarder tous les utilisateurs
+  function saveAllUsers(users) {
+    localStorage.setItem(STORAGE_USERS_KEY, JSON.stringify(users));
+  }
+
+  // Mettre à jour session utilisateur
+  function setCurrentUser(user) {
+    currentUser = user;
+    localStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(user));
+  }
+
+  // Charger session utilisateur
+  function loadCurrentUser() {
+    const u = JSON.parse(localStorage.getItem(STORAGE_SESSION_KEY));
+    if(u) currentUser = u;
+    return currentUser;
+  }
+
+  // Effacer session utilisateur
+  function clearSession() {
+    currentUser = null;
+    localStorage.removeItem(STORAGE_SESSION_KEY);
+  }
+
+  // Trouver utilisateur par phone
+  function findUserByPhone(phone) {
+    const users = getAllUsers();
+    return users.find(u => u.phone === phone);
+  }
+
+  // Mettre à jour utilisateur (remplacer dans tableau)
+  function updateUser(updatedUser) {
+    const users = getAllUsers();
+    const idx = users.findIndex(u => u.phone === updatedUser.phone);
+    if(idx !== -1) {
+      users[idx] = updatedUser;
+      saveAllUsers(users);
+    }
+  }
+
+  // Format date simple
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleString('fr-FR', { dateStyle:'short', timeStyle:'short' });
+  }
+
+  /* --- GESTION DE LA NAVIGATION --- */
+
+  function showSection(name) {
+    for(const key in sections) {
+      if(key === name) sections[key].classList.add('active');
+      else sections[key].classList.remove('active');
+    }
+    updateNavActive(name);
+  }
+
+  function updateNavActive(name) {
+    [...nav.children].forEach(btn => {
+      if(btn.dataset.target === name) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+  }
+
+  // Créer menu nav après connexion
+  function buildNavMenu() {
+    nav.innerHTML = '';
+    const tabs = ['accueil','compte','retrait','recharge','communaute','historique','bonus','support'];
+    tabs.forEach(t => {
+      const btn = document.createElement('button');
+      btn.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+      btn.dataset.target = t;
+      btn.addEventListener('click', () => showSection(t));
+      nav.appendChild(btn);
+    });
+  }
+
+  /* --- INSCRIPTION --- */
+
+  const signupForm = document.getElementById('signupForm');
+  signupForm.addEventListener('submit', e => {
     e.preventDefault();
+    signupMsg.style.color = 'red';
+    signupMsg.textContent = '';
 
-    const walletType = document.getElementById('wallet-type').value;
-    const pseudo = document.getElementById('pseudo').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const transactionPass = document.getElementById('transaction-pass').value;
+    // Récupérer valeurs
+    const code = document.getElementById('signupCountryCode').value;
+    const phone = document.getElementById('signupPhoneNumber').value.trim();
+    const pseudo = document.getElementById('signupPseudo').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
+    const inviteCode = document.getElementById('signupInviteCode').value.trim();
+    const captcha = document.getElementById('signupCaptcha').value.trim();
 
-    if (!walletType || !pseudo || !phone || !transactionPass) {
-      alert("Merci de remplir tous les champs.");
+    if(!phone.match(/^[0-9]{6,15}$/)) {
+      signupMsg.textContent = 'Numéro de téléphone invalide.';
+      return;
+    }
+    if(password.length < 6) {
+      signupMsg.textContent = 'Mot de passe trop court (min 6 caractères).';
+      return;
+    }
+    if(password !== passwordConfirm) {
+      signupMsg.textContent = 'Les mots de passe ne correspondent pas.';
+      return;
+    }
+    if(captcha.toUpperCase() !== 'AB12') {
+      signupMsg.textContent = 'Code CAPTCHA incorrect.';
       return;
     }
 
-    // Ici, on peut valider le format du téléphone, mot de transaction, etc
-    // Exemple simple: sauvegarde en localStorage (à remplacer par backend)
-    const walletData = {
-      walletType,
+    const fullPhone = code + phone;
+    let users = getAllUsers();
+    if(users.some(u => u.phone === fullPhone)) {
+      signupMsg.textContent = 'Ce numéro est déjà inscrit.';
+      return;
+    }
+
+    // Ajouter utilisateur
+    const newUser = {
+      phone: fullPhone,
       pseudo,
-      phone,
-      transactionPass
+      password,
+      balance: 0,
+      wallet: null,
+      referrals: 0,
+      historyWithdraw: [],
+      historyRecharge: [],
+      inviteCode: inviteCode || null,
+      dailyWithdrawDate: null,
+      bonusesEarned: 0,
     };
-    localStorage.setItem('emasWallet', JSON.stringify(walletData));
+    users.push(newUser);
+    saveAllUsers(users);
 
-    msgSuccess.style.display = 'block';
-    walletForm.reset();
+    signupMsg.style.color = '#34d399';
+    signupMsg.textContent = 'Inscription réussie ! Vous pouvez maintenant vous connecter.';
+    signupForm.reset();
   });
-</script>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>EMAS - Accueil, Portefeuille & Retrait</title>
-<style>
-  body {
-    background: #f0f8ff;
-    color: #003366;
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  h1, h2 {
-    color: #002244;
-  }
-  nav {
-    margin: 20px 0;
-  }
-  button.nav-btn {
-    background: #0073e6;
-    border: none;
-    padding: 12px 18px;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-right: 10px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  button.nav-btn:hover {
-    background: #005bb5;
-  }
-  section {
-    display: none;
-    margin-top: 20px;
-  }
-  section.active {
-    display: block;
-  }
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: 600;
-  }
-  select, input[type=text], input[type=password], input[type=tel], input[type=number] {
-    width: 300px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #0073e6;
-    font-size: 1em;
-  }
-  button.action-btn {
-    margin-top: 20px;
-    background: #009900;
-    padding: 12px 20px;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-  }
-  button.action-btn:hover {
-    background: #007700;
-  }
-  .warning {
-    margin-top: 20px;
-    background: #ffe6e6;
-    border: 1px solid #cc0000;
-    color: #990000;
-    padding: 15px;
-    max-width: 600px;
-    border-radius: 8px;
-  }
-  .success {
-    margin-top: 15px;
-    background: #d4edda;
-    border: 1px solid #28a745;
-    color: #155724;
-    padding: 15px;
-    max-width: 600px;
-    border-radius: 8px;
-  }
-  #retreat-rappel {
-    margin-top: 20px;
-    background: #cce0ff;
-    border-radius: 8px;
-    padding: 15px;
-    max-width: 600px;
-    color: #003366;
-  }
-</style>
-</head>
-<body>
+  /* --- CONNEXION --- */
 
-<header><h1>EMAS</h1></header>
+  const loginForm = document.getElementById('loginForm');
+  loginForm.addEventListener('submit', e => {
+    e.preventDefault();
+    loginMsg.style.color = 'red';
+    loginMsg.textContent = '';
 
-<nav>
-  <button class="nav-btn" id="btn-accueil">Accueil</button>
-  <button class="nav-btn" id="btn-compte">Compte</button>
-  <button class="nav-btn" id="btn-retrait">Retrait</button>
-</nav>
+    const code = document.getElementById('loginCountryCode').value;
+    const phone = document.getElementById('loginPhoneNumber').value.trim();
+    const password = document.getElementById('loginPassword').value;
 
-<!-- Section Accueil -->
-<section id="accueil" class="active">
-  <h2>Bienvenue sur EMAS</h2>
-  <p>Voici la page d'accueil.</p>
-  <!-- Ici tu peux insérer infos utilisateur, graphique, etc -->
-</section>
+    if(!phone.match(/^[0-9]{6,15}$/)) {
+      loginMsg.textContent = 'Numéro de téléphone invalide.';
+      return;
+    }
+    if(!password) {
+      loginMsg.textContent = 'Mot de passe requis.';
+      return;
+    }
 
-<!-- Section Portefeuille -->
-<section id="portefeuille">
-  <h2>Enregistrer votre portefeuille</h2>
-  
-  <div class="warning">
-    <p><strong>Attention :</strong></p>
-    <ol>
-      <li>Vous pouvez uniquement ajouter un portefeuille de transfert mobile money pour le retrait.</li>
-      <li>Veuillez-vous assurer que le numéro du portefeuille de transfert mobile money est correct et fonctionnel.</li>
-    </ol>
-  </div>
-  
-  <form id="wallet-form">
-    <label for="wallet-type">Portefeuille (mobile money) :</label>
-    <select id="wallet-type" required>
-      <option value="" disabled selected>-- Choisissez un portefeuille --</option>
-      <option value="MTN">MTN</option>
-      <option value="ORANGE">ORANGE</option>
-      <option value="TEST">TEST</option>
-      <option value="TMONEY">TMONEY</option>
-      <option value="WAVE">WAVE</option>
-      <option value="FLOOZ">FLOOZ</option>
-    </select>
-    
-    <label for="pseudo">Pseudo :</label>
-    <input type="text" id="pseudo" placeholder="Votre pseudo" required />
-    
-    <label for="phone">Numéro de téléphone :</label>
-    <input type="tel" id="phone" placeholder="+228 ..." pattern="\+?\d{8,15}" required />
-    
-    <label for="transaction-pass">Mot de transaction :</label>
-    <input type="password" id="transaction-pass" placeholder="Mot de transaction" required />
-    
-    <button type="submit" id="create-wallet-btn">Créer un portefeuille</button>
-  </form>
-  
-  <div id="msg-success-wallet" class="success" style="display:none;">
-    Portefeuille enregistré avec succès !
-  </div>
-</section>
+    const fullPhone = code + phone;
+    let users = getAllUsers();
+    const user = users.find(u => u.phone === fullPhone && u.password === password);
+    if(user) {
+      setCurrentUser(user);
+      loginMsg.style.color = '#34d399';
+      loginMsg.textContent = `Connexion réussie, bienvenue ${user.pseudo} !`;
+      setTimeout(() => {
+        showDashboard();
+      }, 700);
+    } else {
+      loginMsg.textContent = 'Identifiants incorrects.';
+    }
+  });
 
-<!-- Section Retrait -->
-<section id="retrait">
-  <h2>Demander un retrait</h2>
+  // Basculer entre inscription et connexion
+  document.getElementById('showSignupLink').addEventListener('click', e => {
+    e.preventDefault();
+    showSection('inscription');
+  });
+  document.getElementById('showLoginLink').addEventListener('click', e => {
+    e.preventDefault();
+    showSection('connexion');
+  });
 
-  <form id="retrait-form">
-    <label for="montant">Montant à retirer (FCFA) :</label>
-    <input type="number" id="montant" min="1000" max="10000000" placeholder="1000 - 10 000 000" required />
-    
-    <label for="retreat-pass">Mot de transaction :</label>
-    <input type="password" id="retreat-pass" placeholder="Mot de transaction" required />
-    
-    <button type="submit" class="action-btn">Demander un retrait</button>
-  </form>
-  
-  <div id="msg-success-retrait" class="success" style="display:none;"></div>
-  <div id="msg-error-retrait" class="warning" style="display:none;"></div>
+  /* --- AFFICHAGE DASHBOARD --- */
 
-  <div id="retreat-rappel">
-    <p><strong>Rappel :</strong></p>
-    <ol>
-      <li>Retrait quotidien 24h/24 et 7j/7.</li>
-      <li>Montant de retrait entre 1000 FCFA et 10 000 000 FCFA.</li>
-      <li>Pour faciliter le règlement financier, vous ne pouvez demander un retrait qu'une seule fois par jour.</li>
-      <li>Taux de retrait : 5% (commission).</li>
-    </ol>
-  </div>
-</section>
-
-<script>
-  // Navigation simple entre sections
-  const btnAccueil = document.getElementById('btn-accueil');
-  const btnCompte = document.getElementById('btn-compte');
-  const btnRetrait = document.getElementById('btn-retrait');
-  const sectionAccueil = document.getElementById('accueil');
-  const sectionPortefeuille = document.getElementById('portefeuille');
-  const sectionRetrait = document.getElementById('retrait');
-
-  function showSection(section) {
-    [sectionAccueil, sectionPortefeuille, sectionRetrait].forEach(s => s.classList.remove('active'));
-    section.classList.add('active');
+  function showDashboard() {
+    buildNavMenu();
+    updateUserDataUI();
+    showSection('accueil');
   }
 
-  btnAccueil.addEventListener('click', () => showSection(sectionAccueil));
-  btnCompte.addEventListener('click', () => showSection(sectionPortefeuille));
-  btnRetrait.addEventListener('click', () => showSection(sectionRetrait));
+  // Met à jour affichage infos utilisateur dans dashboard
+  function updateUserDataUI() {
+    currentUser = loadCurrentUser();
+    if(!currentUser) {
+      alert('Session expirée, veuillez vous reconnecter.');
+      logout();
+      return;
+    }
+    userNameDisplay.textContent = currentUser.pseudo;
+    userPhoneDisplay.textContent = currentUser.phone;
+    userBalanceDisplay.textContent = currentUser.balance.toLocaleString() + ' FCFA';
+    rechargeBalanceDisplay.textContent = currentUser.balance.toLocaleString() + ' FCFA';
 
-  // Gestion formulaire portefeuille
-  const walletForm = document.getElementById('wallet-form');
-  const msgSuccessWallet = document.getElementById('msg-success-wallet');
+    // Lien d'affiliation
+    const baseUrl = location.origin + location.pathname;
+    affiliateLinkInput.value = `${baseUrl}?ref=${encodeURIComponent(currentUser.phone)}`;
+
+    // Parrainages
+    referralCountSpan.textContent = currentUser.referrals || 0;
+    referralProgress.value = Math.min(currentUser.referrals || 0, 10);
+    bonusReferralCount.textContent = currentUser.referrals || 0;
+    bonusProgress.value = Math.min(currentUser.referrals || 0, 10);
+
+    // Afficher historique
+    renderHistory();
+
+    // Dessiner graphique profit
+    drawProfitChart();
+
+  }
+
+  /* --- LOGOUT --- */
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    logout();
+  });
+  function logout() {
+    clearSession();
+    nav.innerHTML = '';
+    showSection('connexion');
+  }
+
+  /* --- GESTION PORTEFEUILLE --- */
 
   walletForm.addEventListener('submit', e => {
     e.preventDefault();
+    walletMsg.style.color = 'red';
+    walletMsg.textContent = '';
 
-    const walletType = document.getElementById('wallet-type').value;
-    const pseudo = document.getElementById('pseudo').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const transactionPass = document.getElementById('transaction-pass').value;
+    const method = document.getElementById('walletMethod').value;
+    const pseudo = document.getElementById('walletPseudo').value.trim();
+    const phone = document.getElementById('walletPhone').value.trim();
+    const pwd = document.getElementById('walletPwd').value;
 
-    if (!walletType || !pseudo || !phone || !transactionPass) {
-      alert("Merci de remplir tous les champs.");
+    if(!method) {
+      walletMsg.textContent = 'Veuillez choisir un moyen de paiement.';
+      return;
+    }
+    if(!phone.match(/^[0-9]{6,15}$/)) {
+      walletMsg.textContent = 'Numéro de téléphone invalide.';
+      return;
+    }
+    if(pwd.length < 4) {
+      walletMsg.textContent = 'Le mot de transaction doit contenir au moins 4 caractères.';
       return;
     }
 
-    // Sauvegarde simple en localStorage (à remplacer par backend)
-    const walletData = { walletType, pseudo, phone, transactionPass };
-    localStorage.setItem('emasWallet', JSON.stringify(walletData));
+    currentUser.wallet = { method, pseudo, phone, transactionPwd: pwd };
+    updateUser(currentUser);
+    setCurrentUser(currentUser);
 
-    msgSuccessWallet.style.display = 'block';
+    walletMsg.style.color = '#34d399';
+    walletMsg.textContent = 'Portefeuille créé avec succès.';
     walletForm.reset();
   });
 
-  // Gestion formulaire retrait
-  const retraitForm = document.getElementById('retrait-form');
-  const msgSuccessRetrait = document.getElementById('msg-success-retrait');
-  const msgErrorRetrait = document.getElementById('msg-error-retrait');
+  /* --- GESTION RETRAIT --- */
 
-  retraitForm.addEventListener('submit', e => {
+  withdrawForm.addEventListener('submit', e => {
     e.preventDefault();
+    withdrawMsg.style.color = 'red';
+    withdrawMsg.textContent = '';
 
-    msgSuccessRetrait.style.display = 'none';
-    msgErrorRetrait.style.display = 'none';
-
-    const montant = parseInt(document.getElementById('montant').value, 10);
-    const retraitPass = document.getElementById('retreat-pass').value;
-
-    if (isNaN(montant) || montant < 1000 || montant > 10000000) {
-      msgErrorRetrait.textContent = "Le montant doit être entre 1 000 et 10 000 000 FCFA.";
-      msgErrorRetrait.style.display = 'block';
+    if(!currentUser.wallet) {
+      withdrawMsg.textContent = 'Vous devez d\'abord créer un portefeuille dans l\'onglet Compte.';
       return;
     }
 
-    if (!retraitPass) {
-      msgErrorRetrait.textContent = "Veuillez saisir votre mot de transaction.";
-      msgErrorRetrait.style.display = 'block';
+    const amount = parseInt(document.getElementById('withdrawAmount').value);
+    const pwd = document.getElementById('withdrawPwd').value;
+
+    if(isNaN(amount) || amount < 1000 || amount > 10000000) {
+      withdrawMsg.textContent = 'Le montant doit être entre 1000 et 10 000 000 FCFA.';
       return;
     }
 
-    // Récupérer les données portefeuille
-    const walletData = JSON.parse(localStorage.getItem('emasWallet'));
-    if (!walletData) {
-      msgErrorRetrait.textContent = "Vous devez d'abord créer un portefeuille dans l'onglet Compte.";
-      msgErrorRetrait.style.display = 'block';
+    if(pwd !== currentUser.wallet.transactionPwd) {
+      withdrawMsg.textContent = 'Mot de passe de transaction incorrect.';
       return;
     }
 
-    if (retraitPass !== walletData.transactionPass) {
-      msgErrorRetrait.textContent = "Mot de transaction incorrect.";
-      msgErrorRetrait.style.display = 'block';
-      return;
-    }
-
-    // Vérifier la dernière demande de retrait (une seule fois par jour)
-    const lastRequestStr = localStorage.getItem('lastRetraitRequest');
-    if (lastRequestStr) {
-      const lastRequest = new Date(lastRequestStr);
-      const now = new Date();
-      const diffHours = (now - lastRequest) / (1000 * 60 * 60);
-      if (diffHours < 24) {
-        msgErrorRetrait.textContent = "Vous ne pouvez demander un retrait qu'une seule fois par jour.";
-        msgErrorRetrait.style.display = 'block';
+    // Vérifier si déjà retrait aujourd'hui
+    const lastDate = currentUser.dailyWithdrawDate ? new Date(currentUser.dailyWithdrawDate) : null;
+    const now = new Date();
+    if(lastDate) {
+      const diff = now - lastDate;
+      if(diff < 24*60*60*1000) {
+        withdrawMsg.textContent = 'Vous ne pouvez faire qu\'un seul retrait par jour.';
         return;
       }
     }
 
-    // Calculer montant net après commission 5%
-    const commission = montant * 0.05;
-    const montantNet = montant - commission;
+    if(amount > currentUser.balance) {
+      withdrawMsg.textContent = 'Solde insuffisant.';
+      return;
+    }
 
-    // Simuler le transfert mobile money ici (à remplacer par API)
-    // Exemple :
-    // transferMobileMoney(walletData.walletType, walletData.phone, montantNet);
+    // Calcul taxe 5%
+    const tax = Math.round(amount * 0.05);
+    const received = amount - tax;
 
-    // Sauvegarder la date de la demande de retrait
-    localStorage.setItem('lastRetraitRequest', new Date().toISOString());
+    // Mettre à jour solde
+    currentUser.balance -= amount;
 
-    msgSuccessRetrait.innerHTML = `Retrait de <strong>${montant.toLocaleString('fr-FR')} FCFA</strong> demandé.<br>
-      Commission 5% : <strong>${commission.toLocaleString('fr-FR')} FCFA</strong><br>
-      Montant net transféré : <strong>${montantNet.toLocaleString('fr-FR')} FCFA</strong><br>
-      Transfert effectué sur <strong>${walletData.walletType}</strong>, numéro <strong>${walletData.phone}</strong>.`;
-    msgSuccessRetrait.style.display = 'block';
+    // Historique retrait
+    currentUser.historyWithdraw.push({
+      status: 'réussi',
+      amount,
+      tax,
+      received,
+      date: now.toISOString()
+    });
 
-    retraitForm.reset();
+    currentUser.dailyWithdrawDate = now.toISOString();
+
+    // Bonus 5% pour toi sur retrait (enregistrement dans bonusEarned)
+    currentUser.bonusesEarned += tax;
+
+    updateUser(currentUser);
+    setCurrentUser(currentUser);
+
+    withdrawMsg.style.color = '#34d399';
+    withdrawMsg.textContent = `Retrait de ${amount.toLocaleString()} FCFA effectué avec succès. Montant reçu : ${received.toLocaleString()} FCFA. Taxe : ${tax.toLocaleString()} FCFA.`;
+
+    updateUserDataUI();
+    withdrawForm.reset();
   });
-</script>
 
-</body>
-</html>
-<!-- ... (reste inchangé) ... -->
+  /* --- GESTION RECHARGE --- */
 
-<section id="retrait">
-  <h2>Demander un retrait</h2>
+  rechargeForm.addEventListener('submit', e => {
+    e.preventDefault();
+    rechargeMsg.style.color = 'red';
+    rechargeMsg.textContent = '';
 
-  <div id="no-wallet-msg" class="warning" style="display:none;">
-    Vous devez d'abord <strong>enregistrer votre portefeuille</strong> dans l'onglet <em>Compte</em> avant de pouvoir demander un retrait.
-  </div>
+    const amount = parseInt(document.getElementById('rechargeAmount').value);
+    const method = document.getElementById('rechargeMethod').value;
+    const phone = document.getElementById('rechargePhone').value.trim();
 
-  <form id="retrait-form" style="display:none;">
-    <label for="montant">Montant à retirer (FCFA) :</label>
-    <input type="number" id="montant" min="1000" max="10000000" placeholder="1000 - 10 000 000" required />
-    
-    <label for="retreat-pass">Mot de transaction :</label>
-    <input type="password" id="retreat-pass" placeholder="Mot de transaction" required />
-    
-    <button type="submit" class="action-btn">Demander un retrait</button>
-  </form>
-  
-  <div id="msg-success-retrait" class="success" style="display:none;"></div>
-  <div id="msg-error-retrait" class="warning" style="display:none;"></div>
+    if(isNaN(amount) || amount < 3000) {
+      rechargeMsg.textContent = 'Le montant minimum de recharge est 3000 FCFA.';
+      return;
+    }
+    if(!method) {
+      rechargeMsg.textContent = 'Veuillez choisir un moyen de recharge.';
+      return;
+    }
+    if(!phone.match(/^[0-9]{6,15}$/)) {
+      rechargeMsg.textContent = 'Numéro de téléphone invalide.';
+      return;
+    }
 
-  <div id="retreat-rappel">
-    <p><strong>Rappel :</strong></p>
-    <ol>
-      <li>Retrait quotidien 24h/24 et 7j/7.</li>
-      <li>Montant de retrait entre 1000 FCFA et 10 000 000 FCFA.</li>
-      <li>Pour faciliter le règlement financier, vous ne pouvez demander un retrait qu'une seule fois par jour.</li>
-      <li>Taux de retrait : 5% (commission).</li>
-    </ol>
-  </div>
-</section>
+    // Ajouter au solde
+    currentUser.balance += amount;
 
-<script>
-  // ... navigation et walletForm inchangés ...
+    // Historique recharge
+    currentUser.historyRecharge.push({
+      amount,
+      date: new Date().toISOString()
+    });
 
-  btnRetrait.addEventListener('click', () => {
-    showSection(sectionRetrait);
+    updateUser(currentUser);
+    setCurrentUser(currentUser);
 
-    const walletData = JSON.parse(localStorage.getItem('emasWallet'));
-    const retraitForm = document.getElementById('retrait-form');
-    const noWalletMsg = document.getElementById('no-wallet-msg');
-    const msgSuccessRetrait = document.getElementById('msg-success-retrait');
-    const msgErrorRetrait = document.getElementById('msg-error-retrait');
+    rechargeMsg.style.color = '#34d399';
+    rechargeMsg.textContent = `Recharge de ${amount.toLocaleString()} FCFA effectuée avec succès.`;
 
-    msgSuccessRetrait.style.display = 'none';
-    msgErrorRetrait.style.display = 'none';
+    updateUserDataUI();
+    rechargeForm.reset();
+  });
 
-    if (!walletData) {
-      retraitForm.style.display = 'none';
-      noWalletMsg.style.display = 'block';
+  /* --- RENDU HISTORIQUE --- */
+
+  function renderHistory() {
+    const withdrawBody = document.querySelector('#historyWithdrawTable tbody');
+    const rechargeBody = document.querySelector('#historyRechargeTable tbody');
+    withdrawBody.innerHTML = '';
+    rechargeBody.innerHTML = '';
+
+    if(currentUser.historyWithdraw.length === 0) {
+      withdrawBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Aucun retrait enregistré</td></tr>';
     } else {
-      noWalletMsg.style.display = 'none';
-      retraitForm.style.display = 'block';
+      currentUser.historyWithdraw.forEach(w => {
+        const tr = document.createElement('tr');
+        const statusColor = w.status === 'réussi' ? '#34d399' : '#ef4444';
+        tr.innerHTML = `
+          <td style="color:${statusColor}; font-weight:bold;">${w.status}</td>
+          <td>${w.amount.toLocaleString()}</td>
+          <td>${w.received.toLocaleString()}</td>
+          <td>${w.tax.toLocaleString()}</td>
+          <td>${formatDate(w.date)}</td>
+        `;
+        withdrawBody.appendChild(tr);
+      });
     }
-  });
 
-  // Gestion formulaire retrait
-  // (idem que précédemment, inchangé)
+    if(currentUser.historyRecharge.length === 0) {
+      rechargeBody.innerHTML = '<tr><td colspan="2" style="text-align:center;">Aucune recharge enregistrée</td></tr>';
+    } else {
+      currentUser.historyRecharge.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${r.amount.toLocaleString()}</td>
+          <td>${formatDate(r.date)}</td>
+        `;
+        rechargeBody.appendChild(tr);
+      });
+    }
+  }
+
+  /* --- GRAPHIQUE PROFIT --- */
+  function drawProfitChart() {
+    const ctx = document.getElementById('profitChart').getContext('2d');
+    if(profitChart) profitChart.destroy();
+
+    // Exemple de données simulées journalières sur 7 jours
+    const labels = [];
+    for(let i=6; i>=0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate()-i);
+      labels.push(d.toLocaleDateString('fr-FR', { weekday: 'short' }));
+    }
+
+    // Pour exemple, on fait varier le profit entre 0 et 500 FCFA
+    let dataPoints = [];
+    if(currentUser && currentUser.historyWithdraw) {
+      // Simuler un profil aléatoire ici (ou utiliser données réelles)
+      dataPoints = Array(7).fill(0).map(() => Math.floor(Math.random()*500));
+    } else {
+      dataPoints = Array(7).fill(0);
+    }
+
+    profitChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Profil journalier (FCFA)',
+          data: dataPoints,
+          fill: true,
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          tension: 0.3,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, labels: { color: 'white' } }
+        },
+        scales: {
+          x: { ticks: { color: 'white' }},
+          y: { ticks: { color: 'white' }}
+        }
+      }
+    });
+  }
+
+  /* --- BONUS --- */
+  // Bonus à chaque 10 parrainages, 1000 FCFA ajouté automatiquement au solde
+  function checkBonus() {
+    if(!currentUser) return;
+    const count = currentUser.referrals || 0;
+    const bonusesGiven = currentUser.bonusesEarnedCount || 0;
+    const bonusToGive = Math.floor(count / 10);
+
+    if(bonusToGive > bonusesGiven) {
+      // Donner bonus
+      const newBonusCount = bonusToGive;
+      const bonusDiff = (bonusToGive - bonusesGiven) * 1000;
+
+      currentUser.balance += bonusDiff;
+      currentUser.bonusesEarnedCount = newBonusCount;
+      updateUser(currentUser);
+      setCurrentUser(currentUser);
+      updateUserDataUI();
+      alert(`Félicitations ! Vous avez gagné un bonus de ${bonusDiff.toLocaleString()} FCFA.`);
+    }
+  }
+
+  /* --- INITIALISATION --- */
+
+  window.onload = () => {
+    const user = loadCurrentUser();
+    if(user) {
+      currentUser = user;
+      buildNavMenu();
+      updateUserDataUI();
+      showSection('accueil');
+      checkBonus();
+    } else {
+      showSection('connexion');
+    }
+  };
+
+  // Navigation des boutons de l'accueil
+  document.querySelectorAll('#accueil button[data-target]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const target = e.target.dataset.target;
+      showSection(target);
+    });
+  });
 
 </script>
 
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Recharge | EMAS</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="recharge-page">
-  <div class="container">
-    <h1>🔋 Recharger mon compte</h1>
 
-    <form action="recharge_success.html" method="POST" class="recharge-form">
-      <label for="montant">💵 Montant à recharger :</label>
-      <input type="number" id="montant" name="montant" required placeholder="Ex: 5000 FCFA" />
-
-      <label for="numero">📱 Numéro Mobile Money :</label>
-      <input type="tel" id="numero" name="numero" required placeholder="Ex: 92396480" />
-
-      <button type="submit">🚀 Recharger maintenant</button>
-    </form>
-
-    <p class="back-home">
-      🔙 <a href="accueil.html">Retour à l’accueil</a>
-    </p>
-  </div>
-</body>
-</html>
-body.recharge-page {
-  background-color: #f4f9ff;
-  font-family: 'Segoe UI', sans-serif;
-  color: #004488;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.container {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 68, 136, 0.1);
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-}
-
-h1 {
-  margin-bottom: 1.5rem;
-  color: #004488;
-}
-
-.recharge-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-input {
-  padding: 0.8rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-button {
-  background-color: #007bff;
-  color: white;
-  padding: 0.9rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.back-home {
-  margin-top: 1.5rem;
-}
-
-.back-home a {
-  text-decoration: none;
-  color: #004488;
-  font-weight: bold;
-}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Recharge réussie</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="recharge-page">
-  <div class="container">
-    <h1>✅ Recharge réussie !</h1>
-    <p>Merci d’avoir rechargé votre compte EMAS.</p>
-    <a href="accueil.html">🏠 Retour à l’accueil</a>
-  </div>
-</body>
-</html>
-<a href="communaute.html">🌍 Communauté</a>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Communauté EMAS</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #e9f2ff;
-      color: #003366;
-    }
-
-    header {
-      background: #007BFF;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 1.6em;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #0056b3;
-    }
-
-    nav a {
-      color: white;
-      padding: 15px 25px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.3s;
-    }
-
-    nav a:hover {
-      background-color: #003d80;
-    }
-
-    .container {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .temoignage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .temoignage img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      margin-top: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .btn-contact {
-      background-color: #25D366;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 16px;
-      margin-top: 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-contact:hover {
-      background-color: #1da851;
-    }
-
-    footer {
-      background: #003366;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    @media screen and (max-width: 600px) {
-      .temoignage img {
-        width: 90%;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav a {
-        padding: 10px 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>🌐 Bienvenue dans la Communauté EMAS</header>
-
-  <nav>
-    <a href="accueil.html">🏠 Accueil</a>
-    <a href="connexion.html">🔐 Connexion</a>
-    <a href="inscription.html">📝 Inscription</a>
-    <a href="communaute.html">🤝 Communauté</a>
-  </nav>
-
-  <div class="container">
-    <h2>🤗 Rejoignez notre communauté active !</h2>
-    <p>Des milliers de membres partagent chaque jour leurs expériences et réussites sur EMAS.</p>
-    
-    <div class="temoignage">
-      <img src="images/temoignage1.jpg" alt="Témoignage EMAS">
-      <p>💬 "Grâce à EMAS, j’ai pu faire fructifier mon argent en toute sécurité. Merci à toute l’équipe !" - Adjoa T.</p>
-    </div>
-
-    <a class="btn-contact" href="https://wa.me/22892396480" target="_blank">💬 Rejoindre la communauté WhatsApp</a>
-  </div>
-
-  <footer>
-    © 2025 EMAS. Tous droits réservés.
-  </footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Historique | EMAS</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="historique-page">
-  <header>
-    <h1>📊 Mon Historique</h1>
-    <nav>
-      <a href="index.html">🏠 Accueil</a>
-      <a href="connexion.html">🔐 Connexion</a>
-      <a href="inscription.html">📝 Inscription</a>
-      <a href="recharge.html">💳 Recharge</a>
-      <a href="historique.html" class="active">📊 Historique</a>
-      <a href="communaute.html">👥 Communauté</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="historique-container">
-      <h2>💼 Historique des Transactions</h2>
-      
-      <div class="historique-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Montant</th>
-              <th>Statut</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>06/08/2025</td>
-              <td>Investissement</td>
-              <td>10 000 FCFA</td>
-              <td class="valide">✅ Confirmé</td>
-            </tr>
-            <tr>
-              <td>05/08/2025</td>
-              <td>Retrait</td>
-              <td>5 000 FCFA</td>
-              <td class="attente">⏳ En attente</td>
-            </tr>
-            <tr>
-              <td>03/08/2025</td>
-              <td>Bonus</td>
-              <td>2 000 FCFA</td>
-              <td class="valide">✅ Confirmé</td>
-            </tr>
-            <tr>
-              <td>01/08/2025</td>
-              <td>Recharge</td>
-              <td>20 000 FCFA</td>
-              <td class="valide">✅ Confirmé</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="info-box">
-        📌 Astuce : consulte régulièrement cette page pour suivre tes investissements et retraits !
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 EMAS. Tous droits réservés.</p>
-  </footer>
-</body>
-</html>
-body.historique-page {
-  background: #f0f8ff;
-  color: #000;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  background: #007BFF;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
-header nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-header nav a.active {
-  text-decoration: underline;
-}
-
-.historique-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
-}
-
-.historique-table table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-.historique-table th, .historique-table td {
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
-
-.historique-table .valide {
-  color: green;
-  font-weight: bold;
-}
-
-.historique-table .attente {
-  color: orange;
-  font-weight: bold;
-}
-
-.info-box {
-  background: #e6f2ff;
-  padding: 10px;
-  margin-top: 20px;
-  border-left: 5px solid #007BFF;
-  font-size: 0.95rem;
-}
-
-footer {
-  background: #007BFF;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-  margin-top: 2rem;
-}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mes Bonus - EMAS</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="emas-body">
-  <header class="emas-header">
-    <h1>🎁 Mes Bonus</h1>
-    <nav>
-      <a href="accueil.html">🏠 Accueil</a>
-      <a href="historique.html">📜 Historique</a>
-      <a href="bonus.html" class="active">🎁 Bonus</a>
-      <a href="recharge.html">💳 Recharge</a>
-      <a href="communaute.html">👥 Communauté</a>
-      <a href="logout.html">🚪 Déconnexion</a>
-    </nav>
-  </header>
-
-  <main class="emas-main">
-    <section class="bonus-section">
-      <h2>💰 Vos Gains de Bonus</h2>
-
-      <div class="bonus-card">
-        <h3>Bonus de parrainage</h3>
-        <p>🔗 Total parrainés : <strong>12 personnes</strong></p>
-        <p>🎉 Bonus reçu : <strong>18 000 FCFA</strong></p>
-      </div>
-
-      <div class="bonus-card">
-        <h3>Bonus de niveau 2 et 3</h3>
-        <p>🌟 Niveau 2 : <strong>6 000 FCFA</strong></p>
-        <p>🌟 Niveau 3 : <strong>3 000 FCFA</strong></p>
-      </div>
-
-      <div class="bonus-total">
-        <h3>💎 Total des bonus reçus : <span>27 000 FCFA</span></h3>
-      </div>
-    </section>
-  </main>
-
-  <footer class="emas-footer">
-    <p>&copy; 2025 EMAS Invest. Tous droits réservés.</p>
-  </footer>
-</body>
-</html>
-body.emas-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f0f8ff;
-  color: #003366;
-  margin: 0;
-  padding: 0;
-}
-
-.emas-header {
-  background: #007bff;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.emas-header nav a {
-  margin: 0 10px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.emas-header nav a.active {
-  text-decoration: underline;
-}
-
-.emas-main {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.bonus-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.bonus-card {
-  background: white;
-  border-left: 5px solid #007bff;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 6px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-}
-
-.bonus-total {
-  background: #e0f0ff;
-  text-align: center;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 20px;
-}
-
-footer.emas-footer {
-  background: #003366;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  font-size: 14px;
-}
