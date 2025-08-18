@@ -17,6 +17,7 @@
                 <li><a href="recharge.html">Recharge</a></li>
                 <li><a href="retrait.html">Retrait</a></li>
                 <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="historique.html">Historique</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
@@ -95,6 +96,7 @@
                 <li><a href="recharge.html">Recharge</a></li>
                 <li><a href="retrait.html">Retrait</a></li>
                 <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="historique.html">Historique</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
@@ -130,6 +132,7 @@
                 <li><a href="recharge.html">Recharge</a></li>
                 <li><a href="retrait.html">Retrait</a></li>
                 <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="historique.html">Historique</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
@@ -165,6 +168,7 @@
                 <li><a href="recharge.html">Recharge</a></li>
                 <li><a href="retrait.html">Retrait</a></li>
                 <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="historique.html">Historique</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
@@ -200,6 +204,7 @@
                 <li><a href="recharge.html">Recharge</a></li>
                 <li><a href="retrait.html">Retrait</a></li>
                 <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="historique.html">Historique</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
@@ -234,6 +239,7 @@
                 <li><a href="recharge.html">Recharge</a></li>
                 <li><a href="retrait.html">Retrait</a></li>
                 <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="historique.html">Historique</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
         </nav>
@@ -243,6 +249,41 @@
         <h2>Contactez-nous</h2>
         <p>Email : emasinvest3@gmail.com</p>
         <p>Numéro : 92388045</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 EmaInvest. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - EmaInvest</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Historique</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="bonus.html">Bonus</a></li>
+                <li><a href="recharge.html">Recharge</a></li>
+                <li><a href="retrait.html">Retrait</a></li>
+                <li><a href="communaute.html">Communauté</a></li>
+                <li><a href="historique.html">Historique</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="historySection">
+        <h2>Historique des transactions</h2>
+        <p>Liste des recharges, retraits et gains sera affichée ici.</p>
     </section>
 
     <footer>
@@ -302,36 +343,39 @@ section {
 
 .dark-mode {
     background-color: #121212;
-    color: #f0f4f8;
+    color: #f0f4f8;
 }
 // Mode clair / sombre
 const themeToggle = document.getElementById("themeToggle");
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    document.body.classList.toggle("light-mode");
-});
+if(themeToggle){
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        document.body.classList.toggle("light-mode");
+    });
+}
 
 // Chatbot flottant
 const chatToggle = document.getElementById("chatToggle");
 const chatWindow = document.getElementById("chatWindow");
-chatToggle.addEventListener("click", () => {
-    chatWindow.style.display = chatWindow.style.display === "block" ? "none" : "block";
-});
+if(chatToggle && chatWindow){
+    chatToggle.addEventListener("click", () => {
+        chatWindow.style.display = chatWindow.style.display === "block" ? "none" : "block";
+    });
+}
 
 // Bonus : activation bouton selon titre
 const recupererBtn = document.getElementById("recupererBtn");
 const userTitle = document.getElementById("userTitle");
 
 function updateBonusButton(title) {
-    if(title === "Bronze") {
-        recupererBtn.disabled = false;
-    } else if(title === "Argent") {
-        recupererBtn.disabled = false;
-    } else if(title === "Or") {
-        recupererBtn.disabled = false;
-    } else if(title === "Diamant") {
+    if(title){
         recupererBtn.disabled = false;
     }
 }
 
-updateBonusButton(userTitle.textContent);
+if(userTitle){
+    updateBonusButton(userTitle.textContent);
+}
+
+
+
